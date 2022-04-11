@@ -2,18 +2,20 @@ import React from 'react';
 import Flex from '../Flex';
 import { ButtonNewFact, CounterRandomFact, TextRandomFact } from './CardRandomFact.styles';
 
+interface CardProps {
+  newFact?: () => void;
+  text: string;
+  time: number;
+}
 
-
-const CardRandomFact: React.FC = () => {
-  let a = 10;
+const CardRandomFact: React.FC<CardProps> = ({newFact, text, time}) => {
   return (
     <Flex fDirection='column' alignItems='flex-start' marginTop={57}>
       <TextRandomFact>
-        There are approximately 60,000 hairs per square inch on the back of a
-        cat and about 120,000 per square inch on its underside.
+        {text}
       </TextRandomFact>
-      <CounterRandomFact>Can be read in {a} seconds</CounterRandomFact>
-      <ButtonNewFact>Get new fact</ButtonNewFact>
+      <CounterRandomFact>Can be read in {time} seconds</CounterRandomFact>
+      <ButtonNewFact onClick={newFact}>Get new fact</ButtonNewFact>
     </Flex>
   );
 };

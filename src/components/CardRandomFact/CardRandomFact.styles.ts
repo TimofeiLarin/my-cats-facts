@@ -17,7 +17,7 @@ export const ButtonNewFact = styled.button`
   height: 81px;
   font-size: 20px;
   color: white;
-  background: linear-gradient(90deg, #C65252 0%, #5329CA 100%);
+  background: linear-gradient(90deg, #c65252 0%, #5329ca 100%);
   border: none;
-
+  cursor: pointer;
 `;

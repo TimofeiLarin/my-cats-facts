@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-const TitlePage = styled.h1<{ align?: string, marginTop?: string }>`
+interface TitleProps {
+  align?: string;
+  marginTop?: number;
+}
+
+const TitlePage = styled.h1<TitleProps>`
   font-size: 48px;
   text-align: ${(props) => props.align || 'left'};
-  margin-top: ${(props) => props.marginTop}
+  margin-top: ${(props) => props.marginTop}px;
 `;
- export default TitlePage;
+export default TitlePage;

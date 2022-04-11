@@ -10,7 +10,7 @@ const Main: React.FC = () => {
       marginTop={151}
     >
       <img src='./assets/image/cat-main.png' alt='Main cat' />
-      <TitlePage align='center' marginTop='54px'>
+      <TitlePage align='center' marginTop={54}>
         Welcome to our site!
       </TitlePage>
     </Flex>
