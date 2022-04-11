@@ -20,27 +20,16 @@ const RandomFact: React.FC = () => {
       alert('Failed to fetch random fact');
     }
   };
-  
+
   React.useEffect(() => {
     fetchNewFact();
   }, []);
-
-  const timeCount = Math.ceil(
-    randomFact.split(' ').filter((word: any) => word.length > 2 && isNaN(word))
-      .length * 0.3
-  );
-
-  console.log(timeCount);
 
   return (
     <Flex jContent='center' marginTop={55}>
       <Wrapper>
         <TitlePage>Random fact</TitlePage>
-        <CardRandomFact
-          text={randomFact}
-          time={timeCount}
-          newFact={fetchNewFact}
-        />
+        <CardRandomFact text={randomFact} newFact={fetchNewFact} />
       </Wrapper>
     </Flex>
   );

@@ -12,7 +12,7 @@ const Flex = styled.div<FlexProps>`
   flex-direction: ${(props) => props.fDirection || 'row'};
   align-items: ${(props) => props.alignItems || 'center'};
   justify-content: ${(props) => props.jContent || 'flex-start'};
-  margin-top: ${(props) => props.marginTop}px;
+  margin-top: ${(props) => props.marginTop || 0}px;
 `;
 
 export default Flex;
