@@ -1,62 +1,97 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import {
   CardFact,
   Flex,
   Grid,
+  Limitations,
   Pagination,
   TitlePage,
   Wrapper,
 } from '../../components';
 
-interface IFetchFact {
-  fact: string;
-  length?: number;
-}
+import { Fact, Link } from '../../types';
+import { FetchFactsHandler, mapLinks } from './utils';
 
 const ListOfFacts: React.FC = () => {
-  const [posts, setPosts] = useState<IFetchFact[]>([]);
-  const [links, setLinks] = useState([]);
-  const [page, setPage] = useState(12);
-  const [limit, setLimit] = useState(12);
+  const [posts, setPosts] = React.useState<Fact[]>([]);
+  const [loading, setLoading] = React.useState(false);
+  const [links, setLinks] = React.useState<Link[]>([]);
+  const [page, setPage] = React.useState(1);
+  const [limit, setLimit] = React.useState(10);
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  let pageSearchParams = searchParams.get('page');
 
   React.useEffect(() => {
-    axios
-      .get(`https://catfact.ninja/facts?limit=${limit}&page=${page}`)
-      .then(
-        ({ data }) => (
-          console.log(data), setPosts(data.data), setLinks(data.links)
-        )
-      );
+    if (pageSearchParams && pageSearchParams !== page.toString()) {
+      setPage(parseInt(pageSearchParams));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    setSearchParams({ page: page.toString() });
+  }, [page]);
+
+  React.useEffect(() => {
+    setLoading(true);
+    FetchFactsHandler({
+      params: {
+        limit,
+        page,
+      },
+      resolve: ({ links, data, last_page }) => {
+        setPosts(data);
+        setLoading(false);
+        setLinks(mapLinks(links, page, last_page));
+      },
+    });
   }, [page, limit]);
 
-  console.log(links);
+  const onClickPagination = (name: string) => {
+    if (name === 'Next') {
+      return setPage((prev) => prev + 1);
+    }
+    if (name === 'Previous') {
+      return setPage((prev) => prev - 1);
+    }
+    if (!isNaN(parseInt(name))) {
+      setPage(parseInt(name));
+    }
+  };
 
-  // const clickPogination = (name) => {
-  //   if(name === 'Next'){
-  //     setPage(page - 1);
-  //   }  else if(name === 'Next') {
+  const onClickLimit = (limit: number) => {
+    setLimit(limit);
+  };
 
-  //   }
-  //   setPage(name)
-  // }
   return (
     <Flex jContent='center' marginTop={55}>
       <Wrapper>
         <TitlePage align='start'>List of facts</TitlePage>
-        <Grid>
-          {posts.map(({ fact }, index) => (
-            <CardFact key={index} text={fact} />
-          ))}
-        </Grid>
-        <Flex marginTop={59}>
-          {links.map(({ label, active }) => (
-            <Pagination
-              key={label}
-              name={label}
-              active={active}
-            />
-          ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            <Grid>
+              {posts.map(({ fact }, index) => (
+                <CardFact key={index} text={fact} />
+              ))}
+            </Grid>
+          </>
+        )}
+        <Flex jContent='space-between' marginTop={59} marginBottom={150}>
+          <Flex>
+            {links.map(({ label, active }, index) => (
+              <Pagination
+                onClickPage={onClickPagination}
+                key={`${label}_${index}`}
+                name={label}
+                active={active}
+              />
+            ))}
+          </Flex>
+          <Limitations limitItem={limit} choiceLimit={onClickLimit} />
         </Flex>
       </Wrapper>
     </Flex>

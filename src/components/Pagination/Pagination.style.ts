@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface ButtonPaginationProps {
+type ButtonPaginationProps = {
   active: boolean;
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+
 import { publicRoutes } from '../../router';
 
 const AppRouter = (): React.ReactElement => {

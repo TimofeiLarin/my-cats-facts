@@ -1,15 +1,21 @@
-import React, { FC } from 'react';
+import React from 'react';
+
 import Flex from '../Flex';
 import { ButtonPagination } from './Pagination.style';
 
-interface PaginationProp {
+type PaginationProp = {
   name: string;
   active: boolean;
+  onClickPage: (name: string) => void
 }
 
-const Pagination: FC<PaginationProp> = ({ name, active }) => {
+const Pagination: React.FC<PaginationProp> = ({ name, active, onClickPage }) => {
+
+  const onClickHandler = React.useCallback(() => {
+    onClickPage(name)
+  }, [onClickPage, name])
   return (
-    <ButtonPagination active={active}>
+    <ButtonPagination active={active} onClick={onClickHandler}>
       {name === 'Previous' ? (
         <Flex jContent='center' alignItems='center'>
           <img src='./assets/icons/Prev.svg' alt='Arrow prev' />

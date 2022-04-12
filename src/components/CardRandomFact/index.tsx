@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { useTimeReader } from '../hooks/useTimeReader';
+
 import Flex from '../Flex';
 import {
   ButtonNewFact,
@@ -6,16 +9,13 @@ import {
   TextRandomFact,
 } from './CardRandomFact.styles';
 
-interface CardProps {
+type CardRandomProps = {
   newFact: () => void;
   text: string;
 }
 
-const CardRandomFact: React.FC<CardProps> = ({ newFact, text }) => {
-  const time = Math.ceil(
-    text.split(' ').filter((word: any) => word.length > 2 && isNaN(word))
-      .length * 0.3
-  );
+const CardRandomFact: React.FC<CardRandomProps> = ({ newFact, text }) => {
+  const time = useTimeReader(text);
 
   return (
     <Flex fDirection='column' alignItems='flex-start' marginTop={57}>

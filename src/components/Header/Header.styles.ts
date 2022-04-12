@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-interface PropsNavItem {
+type NavItemProps= {
   color: string;
   paddingRight?: number;
-}
+};
 
 export const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
   height: 80px;
   padding-left: 160px;
   padding-right: 40px;
@@ -27,7 +26,7 @@ export const Logo = styled.img`
   left: 52px;
 `;
 
-export const NavItem = styled.p<PropsNavItem>`
+export const NavItem = styled.p<NavItemProps>`
   font-size: 24px;
   color: ${(props) => props.color};
   padding-right: ${(props) => props.paddingRight}px;

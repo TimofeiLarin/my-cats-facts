@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface TitleProps {
+type TitleProps = {
   align?: string;
   marginTop?: number;
 }

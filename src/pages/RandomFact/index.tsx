@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { CardRandomFact, Flex, TitlePage, Wrapper } from '../../components';
 
-interface IFetchRandom {
+type FetchRandom = {
   fact: string;
   length?: number;
 }
@@ -12,7 +12,7 @@ const RandomFact: React.FC = () => {
 
   const fetchNewFact = async () => {
     try {
-      const { data } = await axios.get<IFetchRandom>(
+      const { data } = await axios.get<FetchRandom>(
         'https://catfact.ninja/fact'
       );
       setRandomFact(data.fact);

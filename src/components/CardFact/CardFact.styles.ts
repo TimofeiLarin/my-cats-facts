@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WrapperCard = styled.p`
+export const WrapperCard = styled.div`
   width: 580px;
   padding: 20px;
   border: 1px solid black;

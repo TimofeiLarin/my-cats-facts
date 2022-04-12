@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Flex, TitlePage } from '../../components';
 
 const Main: React.FC = () => {

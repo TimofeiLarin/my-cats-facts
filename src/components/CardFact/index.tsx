@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useTimeReader } from '../hooks/useTimeReader';
+
 import Flex from '../Flex';
 import { TimeReadCard, WrapperCard } from './CardFact.styles';
 
@@ -8,14 +10,16 @@ interface CardFactProps {
 }
 
 const CardFact: React.FC<CardFactProps> = ({ text }) => {
-  const time = Math.ceil(
-    text.split(' ').filter((word: any) => word.length > 2 && isNaN(word))
-      .length * 0.3
-  );
+  const time = useTimeReader(text);
 
   return (
     <WrapperCard>
-      <Flex fDirection='column' jContent='space-between' alignItems='flex-start'>
+      <Flex
+        fDirection='column'
+        jContent='space-between'
+        alignItems='flex-start'
+        height='100%'
+      >
         <div>{text}</div>
         <TimeReadCard>Can be read in {time} seconds</TimeReadCard>
       </Flex>

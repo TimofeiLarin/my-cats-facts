@@ -1,6 +1,6 @@
 import { ListOfFacts, Main, RandomFact } from '../pages';
 
-export interface IRoute {
+type Route = {
   path: string;
   component: React.ComponentType;
 }
@@ -11,7 +11,7 @@ export enum RoutesNames {
   RANDOM = '/random-fact',
 }
 
-export const publicRoutes: IRoute[] = [
+export const publicRoutes: Route[] = [
   { path: RoutesNames.MAIN, component: Main },
   { path: RoutesNames.LIST, component: ListOfFacts },
   { path: RoutesNames.RANDOM, component: RandomFact },
