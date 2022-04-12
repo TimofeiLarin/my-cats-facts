@@ -2,8 +2,7 @@ import React from 'react';
 
 import { useTimeReader } from '../hooks/useTimeReader';
 
-import Flex from '../Flex';
-import { TimeReadCard, WrapperCard } from './CardFact.styles';
+import { FlexCard, TimeReadCard, WrapperCard } from './CardFact.styles';
 
 interface CardFactProps {
   text: string;
@@ -14,15 +13,10 @@ const CardFact: React.FC<CardFactProps> = ({ text }) => {
 
   return (
     <WrapperCard>
-      <Flex
-        fDirection='column'
-        jContent='space-between'
-        alignItems='flex-start'
-        height='100%'
-      >
+      <FlexCard>
         <div>{text}</div>
         <TimeReadCard>Can be read in {time} seconds</TimeReadCard>
-      </Flex>
+      </FlexCard>
     </WrapperCard>
   );
 };

@@ -9,17 +9,17 @@ const Header: React.FC = React.memo(() => {
       <Link to='/'>
         <LogoWrapper>
           <Logo src='./assets/image/logo.png' alt='Logotype' />
-          <NavItem color='black'>Cat facts</NavItem>
+          <NavItem>Cat facts</NavItem>
         </LogoWrapper>
       </Link>
       <NavItems>
         <Link to='/list-of-facts'>
-          <NavItem color='white' paddingRight={41}>
+          <NavItem color='lightText' paddingRight>
             facts list
           </NavItem>
         </Link>
         <Link to='/random-fact'>
-          <NavItem color='white'>random fact</NavItem>
+          <NavItem color='lightText'>random fact</NavItem>
         </Link>
       </NavItems>
     </NavBar>

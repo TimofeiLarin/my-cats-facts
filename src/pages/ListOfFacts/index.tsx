@@ -68,7 +68,7 @@ const ListOfFacts: React.FC = () => {
   return (
     <Flex jContent='center' marginTop={55}>
       <Wrapper>
-        <TitlePage align='start'>List of facts</TitlePage>
+        <TitlePage align='start' alignList>List of facts</TitlePage>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -80,8 +80,8 @@ const ListOfFacts: React.FC = () => {
             </Grid>
           </>
         )}
-        <Flex jContent='space-between' marginTop={59} marginBottom={150}>
-          <Flex>
+        <Flex jContent='space-between' wrap marginTop={59} marginBottom={150} >
+          <Flex wrap jContent='center'>
             {links.map(({ label, active }, index) => (
               <Pagination
                 onClickPage={onClickPagination}

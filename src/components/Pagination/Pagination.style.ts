@@ -11,8 +11,9 @@ export const ButtonPagination = styled.button<ButtonPaginationProps>`
   color: ${(props) => (props.active === true ? 'white' : 'black')};
   background: ${(props) =>
     props.active === true
-      ? ' linear-gradient(90deg, #C65252 0%, #5329CA 100%)'
-      : '#C4C4C4'};
+      ? `${props.theme.colors.gradient}`
+      : `${props.theme.colors.gray}`};
   cursor: pointer;
   margin-right: 20px;
+  margin-bottom: 20px;
 `;
