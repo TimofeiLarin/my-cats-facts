@@ -9,4 +9,4 @@ export { default as CardRandomFact } from './CardRandomFact';
 export { default as CardFact } from './CardFact';
 export { default as Pagination } from './Pagination';
 export { default as Limitations } from './Limitations';
-
+export { default as Loading } from './Loading';

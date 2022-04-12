@@ -6,7 +6,7 @@ import { CardRandomFact, Flex, TitlePage, Wrapper } from '../../components';
 type FetchRandom = {
   fact: string;
   length?: number;
-}
+};
 const RandomFact: React.FC = () => {
   const [randomFact, setRandomFact] = React.useState('');
 

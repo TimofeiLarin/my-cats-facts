@@ -9,6 +9,7 @@ import {
   Pagination,
   TitlePage,
   Wrapper,
+  Loading,
 } from '../../components';
 
 import { Fact, Link } from '../../types';
@@ -68,9 +69,13 @@ const ListOfFacts: React.FC = () => {
   return (
     <Flex jContent='center' marginTop={55}>
       <Wrapper>
-        <TitlePage align='start' alignList>List of facts</TitlePage>
+        <TitlePage align='start' alignList>
+          List of facts
+        </TitlePage>
         {loading ? (
-          <div>Loading...</div>
+          <Flex jContent='center' alignItems='centers' marginTop={20}>
+            <Loading>Loading...</Loading>
+          </Flex>
         ) : (
           <>
             <Grid>
@@ -80,7 +85,7 @@ const ListOfFacts: React.FC = () => {
             </Grid>
           </>
         )}
-        <Flex jContent='space-between' wrap marginTop={59} marginBottom={150} >
+        <Flex jContent='space-between' wrap marginTop={59} marginBottom={150}>
           <Flex wrap jContent='center'>
             {links.map(({ label, active }, index) => (
               <Pagination

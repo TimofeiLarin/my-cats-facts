@@ -25,6 +25,7 @@ export const theme = {
     lightText: '#FFFFFF',
     gradient: 'linear-gradient(90deg, #C65252 0%, #5329CA 100%)',
     gray: '#C4C4C4',
+    green: '#008736',
   },
   media: {
     phone: '(max-width: 425px)',
